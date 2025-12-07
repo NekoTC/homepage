@@ -1,43 +1,66 @@
 import { useEffect, useState } from 'react'
 
 const skills = [
-    { name: 'Python', width: 81, color: 'var(--neon-pink)' },
-    { name: 'HTML', width: 58, color: 'var(--neon-purple)' },
-    { name: 'JavaScript', width: 20, color: 'var(--neon-yellow)' },
-    { name: 'CSS', width: 34, color: 'var(--neon-cyan)' },
+    { name: 'Python', width: 81 },
+    { name: 'HTML', width: 58 },
+    { name: 'JavaScript', width: 20 },
+    { name: 'CSS', width: 34 },
 ]
 
 export function SkillBars() {
     return (
         <>
             {skills.map((s) => (
-                <SkillBar key={s.name} {...s} />
+                <SkillBar key={s.name} name={s.name} width={s.width} />
             ))}
         </>
     )
 }
 
-function SkillBar({ name, width, color }) {
+function easeOutCubic(t) {
+    return 1 - Math.pow(1 - t, 3);
+}
+
+function SkillBar({ name, width }) {
     const [w, setW] = useState(0)
+
     useEffect(() => {
-        let raf = 0
-        const tick = () => {
-            setW((v) => (v < width ? v + 1 : width))
-            if (w < width) raf = requestAnimationFrame(tick)
-        }
-        raf = requestAnimationFrame(tick)
-        return () => cancelAnimationFrame(raf)
-    }, [width, w])
+        const duration = 1000;
+        const start = performance.now();
+        let rafId;
+
+        const frame = (now) => {
+            const elapsed = now - start;
+            const raw = Math.min(elapsed / duration, 1);
+            const eased = easeOutCubic(raw) * width;
+
+            setW(eased);
+
+            if (raw < 1) {
+                rafId = requestAnimationFrame(frame);
+            }
+        };
+
+        rafId = requestAnimationFrame(frame);
+
+        return () => cancelAnimationFrame(rafId);
+
+    }, [width]);
+
     return (
         <div className="skill-bar">
             <div className="skill-name">
-                <span>{name}</span>
-                <span>{width}%</span>
+                <span style={{color: 'var(--md-sys-color-primary)'}}>{name}</span>
+                <span style={{color: 'var(--md-sys-color-on-surface-variant)'}}>{Math.floor(w)}%</span>
             </div>
             <div className="progress-track">
                 <div
-                    className="progress-fill skill-fill"
-                    style={{ width: `${w}%`, background: color }}
+                    className="progress-fill"
+                    style={{
+                        width: `${w}%`,
+                        backgroundColor: 'var(--md-sys-color-primary)',
+                        transition: 'width 0.1s linear'
+                    }}
                 />
             </div>
         </div>
