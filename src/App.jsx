@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-// import { Globe } from './components/Globe.jsx' // ❌ 已移除：地球
+// import { Globe } from './components/Globe.jsx' // 已移除
 import { Loader } from './components/Loader.jsx'
 import { DeviceStatus } from './components/DeviceStatus.jsx'
 import { SkillBars } from './components/SkillBars.jsx'
@@ -8,30 +8,24 @@ import { Footer } from './components/Footer.jsx';
 
 export default function App() {
     const [ready, setReady] = useState(false)
-    const [isMobile, setIsMobile] = useState(false)
+
+    // ❌ 移除未使用的 isMobile 状态
 
     useEffect(() => {
-        // 缩短加载时间，因为去掉了复杂的进度条动画，主要是为了防闪烁
+        // 缩短加载时间，仅用于防闪烁和内容淡入
         const timer = setTimeout(() => setReady(true), 800)
         return () => clearTimeout(timer)
     }, [])
 
-    useEffect(() => {
-        const mql = window.matchMedia('(max-width: 768px)')
-        setIsMobile(mql.matches)
-        const handler = (e) => setIsMobile(e.matches)
-        mql.addEventListener('change', handler)
-        return () => mql.removeEventListener('change', handler)
-    }, [])
+    // ❌ 移除监听 isMobile 变化的 useEffect hook
 
     return (
         <>
-            {/* 这里的 Loader 组件需要配合 CSS 中的 .simple-spinner 使用 */}
             <Loader visible={!ready} />
 
             <main className={`md-container ${ready ? 'content-visible' : ''}`}>
 
-                {/* 左侧栏：个人信息 - 宽度已加宽 */}
+                {/* 左侧栏：个人信息 */}
                 <aside className="sidebar">
                     <section className="md-card profile-card">
                         <div className="profile-pic-container">
@@ -46,7 +40,8 @@ export default function App() {
                             <span className="role-tag">Student / Developer</span>
 
                             <p className="bio">
-                                Hello there!
+                                Hello there! I build things for the web.<br/>
+                                Simplicity is the ultimate sophistication.
                             </p>
 
                             <img
@@ -79,24 +74,23 @@ export default function App() {
                 {/* 右侧：主要内容 */}
                 <div className="main-content">
 
-                    {/* 设备状态：现在看起来像一个绿色的 Notification Banner */}
                     <DeviceStatus />
 
                     <section className="md-card">
                         <h2 className="section-title">Identity <span>Verified</span></h2>
                         <p style={{ lineHeight: 1.8, color: 'var(--md-sys-color-on-surface-variant)' }}>
                             Just a normal student exploring the digital world. <br/>
-                            Focusing on RythmGames!
+                            Focusing on React, Front-end technologies, and clean UI design.
                         </p>
                     </section>
 
                     <section className="md-card">
-                        <h2 className="section-title">Skills <span>Synced</span></h2>
+                        <h2 className="section-title">Capabilities <span>Synced</span></h2>
                         <SkillBars />
                     </section>
 
                     <section className="md-card">
-                        <h2 className="section-title">Projects <span>Active</span></h2>
+                        <h2 className="section-title">Operations <span>Active</span></h2>
                         <div className="project-grid">
                             <a
                                 href="https://github.com/TakesBot"
