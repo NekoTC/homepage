@@ -1,41 +1,37 @@
 :root {
-  /* MD3 Green/Nature Theme Token */
+  /* MD3 Amber (阳光黄) Theme Token */
   /* 核心色板 */
-  --md-sys-color-primary: #386a20;           /* 深森林绿 - 用于重要文字/图标 */
-  --md-sys-color-on-primary: #ffffff;        /* 白色 - 用于主按钮文字 */
-  --md-sys-color-primary-container: #b7f397; /* 浅嫩绿 - 用于高亮区域/标签背景 */
-  --md-sys-color-on-primary-container: #042100; /* 深绿 - 浅背景上的文字 */
+  --md-sys-color-primary: #8C4E00;           /* 深琥珀 - 重要文字/图标 */
+  --md-sys-color-on-primary: #FFFFFF;        /* 纯白 - 主按钮文字 */
+  --md-sys-color-primary-container: #FFEECC; /* 浅奶黄 - 高亮区域/标签背景 */
+  --md-sys-color-on-primary-container: #241A00; /* 深棕 - 浅背景上的文字 */
 
-  --md-sys-color-secondary: #55624c;         /* 灰橄榄绿 - 用于次要信息 */
-  --md-sys-color-secondary-container: #d9e7cb; /* 极浅灰绿 - 用于次要卡片 */
+  --md-sys-color-secondary: #5C5A53;         /* 灰棕 - 次要信息 */
+  --md-sys-color-secondary-container: #E5E2D5; /* 浅米灰 - 次要卡片 */
 
-  --md-sys-color-background: #fdfdf5;        /* 象牙白/米白 - 网页大背景 */
-  --md-sys-color-surface: #ffffff;           /* 纯白 - 卡片背景 */
-  --md-sys-color-surface-variant: #e0e4d6;   /* 浅灰轮廓线 */
+  --md-sys-color-background: #FFFDF1;        /* 暖白 - 网页大背景 */
+  --md-sys-color-surface: #FFFFFF;           /* 纯白 - 卡片背景 */
+  --md-sys-color-surface-variant: #E8E2D0;   /* 浅灰轮廓线 */
 
-  --md-sys-color-on-surface: #1a1c18;        /* 墨黑 - 正文 */
-  --md-sys-color-on-surface-variant: #43483e; /* 灰黑 - 辅助文字 */
+  --md-sys-color-on-surface: #1D1C16;        /* 墨黑 - 正文 */
+  --md-sys-color-on-surface-variant: #46473A; /* 灰黑 - 辅助文字 */
 
   --md-sys-shape-corner-large: 28px;
   --md-sys-shape-corner-medium: 16px;
   --md-sys-shape-corner-small: 8px;
 
-  /* 关键修改：调浅阴影（降低 Opacity 和 Spread） */
-
-  /* Elevation 2 (默认状态) - 阴影更柔和 */
-  --md-sys-elevation-2:
-          0px 2px 4px 0px rgba(0, 0, 0, 0.06),  /* 小阴影，低不透明度 */
-          0px 1px 2px 0px rgba(0, 0, 0, 0.08); /* 紧凑阴影，低不透明度 */
-
-  /* Elevation 3 (Hover 状态) - 阴影略微增强，但仍然柔和 */
-  --md-sys-elevation-3:
-          0px 4px 8px 0px rgba(0, 0, 0, 0.08),
-          0px 2px 4px 0px rgba(0, 0, 0, 0.1);
-
-  /* Elevation 1 (如果使用，用于最浅的卡片，例如项目卡片) */
+  /* 三档低透明度阴影（同前） */
   --md-sys-elevation-1:
-          0px 1px 1px 0px rgba(0, 0, 0, 0.05),
-          0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+          0px 1px 1px 0px rgba(0, 0, 0, 0.02),
+          0px 1px 2px 0px rgba(0, 0, 0, 0.02);
+
+  --md-sys-elevation-2:
+          0px 2px 4px 0px rgba(0, 0, 0, 0.03),
+          0px 1px 2px 0px rgba(0, 0, 0, 0.04);
+
+  --md-sys-elevation-3:
+          0px 4px 8px 0px rgba(0, 0, 0, 0.04),
+          0px 2px 4px 0px rgba(0, 0, 0, 0.05);
 }
 
 /* 重置 */
@@ -118,7 +114,7 @@ body::before, #globe-canvas {
   overflow: hidden;
   margin-bottom: 20px;
   border: 4px solid var(--md-sys-color-background); /* 加上“反向描边”增加层次 */
-  box-shadow: 0 4px 12px rgba(56, 106, 32, 0.2); /* 绿色投影 */
+  box-shadow: 0 4px 12px var(--md-sys-color-secondary-container);
 }
 
 .profile-pic-container img {
@@ -245,7 +241,6 @@ body::before, #globe-canvas {
 
 .project-item:hover {
   background: var(--md-sys-color-secondary-container);
-  border-color: var(--md-sys-color-primary);
 }
 
 .project-item h3 {
@@ -342,7 +337,7 @@ body::before, #globe-canvas {
 
 /* 单个设备单元 */
 .device-unit {
-  background-color: #f5f7f0; /* 极浅的灰绿色背景 */
+  background-color: var(--md-sys-color-background); /* 极浅的灰绿色背景 */
   border-radius: 16px;       /* 中等圆角 */
   padding: 20px;
   border: 1px solid transparent;
@@ -351,8 +346,7 @@ body::before, #globe-canvas {
 
 /* 悬停效果 */
 .device-unit:hover {
-  background-color: #ecf3e6;
-  border-color: var(--md-sys-color-primary-container);
+  background-color: var(--md-sys-color-secondary-container);
 }
 
 /* 头部布局 */
