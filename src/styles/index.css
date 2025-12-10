@@ -91,13 +91,14 @@ body::before, #globe-canvas {
 
 /* ===== MD3 卡片通用样式 ===== */
 .md-card {
-  background-color: var(--md-sys-color-surface);
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
   border-radius: var(--md-sys-shape-corner-large);
   padding: 32px;
   /* 确保这里使用新的 Elevation 2 */
   box-shadow: var(--md-sys-elevation-2);
   transition: transform 0.2s, box-shadow 0.2s;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .md-card:hover {
@@ -111,6 +112,9 @@ body::before, #globe-canvas {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  align-self: start;
+  position: sticky;
+  top: 40px;
 }
 
 /* 头像区域 */
@@ -205,6 +209,15 @@ body::before, #globe-canvas {
   color: var(--md-sys-color-secondary);
   padding: 4px 8px;
   border-radius: 4px;
+}
+
+/* Identity section typography */
+.identity-text {
+  font-size: 1.1rem;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  line-height: 1.8;
+  color: var(--md-sys-color-on-surface-variant);
 }
 
 /* 设备状态 - 现代扁平化 */

@@ -78,7 +78,7 @@ export default function App() {
 
                     <section className="md-card">
                         <h2 className="section-title">Identity <span>Verified</span></h2>
-                        <p style={{ lineHeight: 1.8, color: 'var(--md-sys-color-on-surface-variant)' }}>
+                        <p className="identity-text">
                             Just a normal student exploring the digital world. <br/>
                             Focusing on React, Front-end technologies, and clean UI design.
                         </p>
