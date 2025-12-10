@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-// import { Globe } from './components/Globe.jsx' // 已移除
 import { Loader } from './components/Loader.jsx'
 import { DeviceStatus } from './components/DeviceStatus.jsx'
 import { SkillBars } from './components/SkillBars.jsx'
@@ -9,15 +8,10 @@ import { Footer } from './components/Footer.jsx';
 export default function App() {
     const [ready, setReady] = useState(false)
 
-    // ❌ 移除未使用的 isMobile 状态
-
     useEffect(() => {
-        // 缩短加载时间，仅用于防闪烁和内容淡入
         const timer = setTimeout(() => setReady(true), 800)
         return () => clearTimeout(timer)
     }, [])
-
-    // ❌ 移除监听 isMobile 变化的 useEffect hook
 
     return (
         <>
@@ -79,8 +73,7 @@ export default function App() {
                     <section className="md-card">
                         <h2 className="section-title">Identity <span>Verified</span></h2>
                         <p className="identity-text">
-                            Just a normal student exploring the digital world. <br/>
-                            Focusing on React, Front-end technologies, and clean UI design.
+                            Just a normal student.
                         </p>
                     </section>
 
@@ -99,7 +92,7 @@ export default function App() {
                                 className="project-item"
                             >
                                 <h3>TakesBot</h3>
-                                <p>A QQ Bot for RythmGames. Built for community efficiency.</p>
+                                <p>A QQ Bot for RhythmGames.</p>
                             </a>
                             <a
                                 href="https://blog.nekotc.cn"
@@ -108,7 +101,7 @@ export default function App() {
                                 className="project-item"
                             >
                                 <h3>Tome's Blog</h3>
-                                <p>Sharing thoughts, tutorials, and development logs.</p>
+                                <p>Sharing nothing(</p>
                             </a>
                         </div>
                     </section>
