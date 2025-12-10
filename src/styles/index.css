@@ -47,6 +47,9 @@
 
 body {
   background-color: var(--md-sys-color-background);
+  background-image: radial-gradient(ellipse at top left, rgba(183, 243, 151, 0.15), transparent 50%),
+                    radial-gradient(ellipse at bottom right, rgba(56, 106, 32, 0.08), transparent 50%);
+  background-attachment: fixed;
   color: var(--md-sys-color-on-surface);
   font-family: 'Roboto', 'Noto Sans SC', system-ui, sans-serif; /* 换用无衬线字体 */
   -webkit-font-smoothing: antialiased;
