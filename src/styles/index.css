@@ -337,14 +337,11 @@ body::before, #globe-canvas {
   .sidebar {
     align-items: center; /* 居中对齐 */
     text-align: center;
+    position: static;
   }
   .contact-list li a {
     justify-content: center;
   }
-  .profile-pic-container {
-    margin: 0 auto 20px;
-  }
-}
 
 /* ===== DeviceStatus 组件专用样式 (MD3 Green) ===== */
 
