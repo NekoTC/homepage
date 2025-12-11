@@ -394,10 +394,13 @@ body::before, #globe-canvas {
   }
 
   .contact-list li a {
+    width: 240px;
     justify-content: center;
   }
 
   .profile-pic-container {
+    width: 240px;
+    height: 240px;
     margin: 0 auto;
   }
 
@@ -527,7 +530,6 @@ body::before, #globe-canvas {
   max-width: 1400px;
   margin-top: 64px;
   padding: 32px 20px 20px;
-  background-color: var(--md-sys-color-background);
   border-top: 1px solid var(--md-sys-color-surface-variant);
 }
 
@@ -553,7 +555,7 @@ body::before, #globe-canvas {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  text-align: right;
+  text-align: center;
   align-items: flex-end;
 }
 
