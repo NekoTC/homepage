@@ -5,7 +5,7 @@ export const config = {
   // Personal Information
   name: "Tome Chen",
   role: "Student / Developer",
-  bio: "Hello there! I build things for the web. Simplicity is the ultimate sophistication.",
+  bio: "Hello there! I build things for the Internet and RhythmGames! ",
   avatar: "https://q.qlogo.cn/headimg_dl?dst_uin=1719252259&spec=640&img_type=jpg",
   
   // Social Links
@@ -56,8 +56,8 @@ export const config = {
   footer: {
     icp: "陇ICP备2024006604号-1",
     icpUrl: "https://beian.miit.gov.cn/",
-    copyright: "(C) 2025 ALL RIGHTS RESERVED.",
-    version: "NEKOTC.V2.0"
+    copyright: "Tome Chen © 2025",
+    version: "HOMEPAGE"
   }
 };
 

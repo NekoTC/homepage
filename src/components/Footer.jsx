@@ -20,7 +20,7 @@ export function Footer() {
                 {/* Right side: Version, Copyright, ICP (right-aligned) */}
                 <div className="footer-right">
                     <p className="text-md-on-surface-variant text-sm">
-                        System Version: {config.footer.version} | Commit: {commitHash}
+                        {config.footer.version} | Commit: {commitHash}
                     </p>
                     <p className="text-md-on-surface text-sm font-medium">
                         {config.footer.copyright}
