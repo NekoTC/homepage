@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Loader } from './components/Loader.jsx'
-import { Hero } from './components/Hero.jsx'
+import { FirstScreen } from './components/FirstScreen.jsx'
 import { Dashboard } from './components/Dashboard.jsx'
 import { Footer } from './components/Footer.jsx'
 import { FloatingActionButton } from './components/FloatingActionButton.jsx'
@@ -18,11 +18,12 @@ export default function App() {
         <>
             <Loader visible={!ready} />
 
-            {/* Hero Section with animated blobs */}
-            <Hero />
+            {/* Main Content Container */}
+            <main className={`main-container ${ready ? 'content-visible' : ''}`}>
+                {/* First Screen - replaces Hero and sidebar profile */}
+                <FirstScreen />
 
-            {/* Main Dashboard Content */}
-            <main className={`md-container ${ready ? 'content-visible' : ''}`}>
+                {/* Main Dashboard Content - single column */}
                 <Dashboard />
             </main>
 

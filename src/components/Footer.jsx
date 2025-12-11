@@ -5,18 +5,26 @@ export function Footer() {
     const commitHash = process.env.REACT_APP_COMMIT_HASH || 'dev';
     
     return (
-        <footer className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 mb-8">
-            <div className="border-t border-md-surface-variant pt-8 pb-4">
-                <div className="text-center space-y-2">
-                    {/* Version & Copyright */}
+        <footer className="footer-container">
+            <div className="footer-content">
+                {/* Left side: Count image */}
+                <div className="footer-left">
+                    <img
+                        src="https://count.getloli.com/@nekotc?name=nekotc&theme=rule34&padding=7&offset=0&align=top&scale=1&pixelated=1&darkmode=auto"
+                        alt="Visitor count"
+                        loading="lazy"
+                        className="footer-count-image"
+                    />
+                </div>
+                
+                {/* Right side: Version, Copyright, ICP (right-aligned) */}
+                <div className="footer-right">
                     <p className="text-md-on-surface-variant text-sm">
                         System Version: {config.footer.version} | Commit: {commitHash}
                     </p>
                     <p className="text-md-on-surface text-sm font-medium">
                         {config.footer.copyright}
                     </p>
-                    
-                    {/* ICP Link */}
                     <a
                         href={config.footer.icpUrl}
                         target="_blank"

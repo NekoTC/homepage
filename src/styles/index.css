@@ -66,27 +66,42 @@ body::before, #globe-canvas {
   display: none;
 }
 
-/* ===== 布局容器调整 ===== */
-.md-container {
-  display: grid;
-  /* 关键修改：左栏固定 350px，右栏固定 525px (350 * 1.5) */
-  /* 如果你的 max-width 较大 (例如 1400px)，使用 auto-fit 效果更好，
-     这里我们采用固定的，并使用 minmax 确保响应性，但优先固定比例 */
-  grid-template-columns: minmax(350px, 1fr) minmax(525px, 2.5fr);
-  /* **解释:** minmax(350px, 1fr): 左栏最小 350px，如果有剩余空间，按 1 份比例分配。
-     minmax(525px, 1.5fr): 右栏最小 525px，如果有剩余空间，按 1.5 份比例分配。
-     这样确保在屏幕足够大时，右栏的宽度始终是左栏的 1.5 倍。
-  */
-  gap: 32px; /* 间距保持 32px */
+/* ===== Main Container - Single Column Layout ===== */
+.main-container {
   max-width: 1400px;
   width: 100%;
   opacity: 0;
   animation: fadeContent 0.8s ease-out forwards;
   animation-delay: 0.5s;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
 }
 
 @keyframes fadeContent {
   to { opacity: 1; }
+}
+
+/* ===== First Screen Layout ===== */
+.first-screen {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  padding: 40px 0;
+  min-height: 60vh;
+}
+
+.first-screen-left {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.first-screen-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* ===== MD3 卡片通用样式 ===== */
@@ -107,14 +122,12 @@ body::before, #globe-canvas {
   transform: translateY(-1px); /* 悬停抬升也略微减小 */
 }
 
-/* 侧边栏 */
-.sidebar {
+/* Dashboard Content - Single Column */
+.dashboard-content {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  align-self: start;
-  position: sticky;
-  top: 40px;
+  gap: 48px;
+  width: 100%;
 }
 
 /* 头像区域 */
@@ -186,11 +199,32 @@ body::before, #globe-canvas {
   padding-left: 28px; /* 悬停时的位移动画 */
 }
 
-/* 主内容区 */
-.main-content {
+/* Content Section - No large card wrapper */
+.content-section {
   display: flex;
   flex-direction: column;
   gap: 24px;
+}
+
+/* Section Heading - Large heading style */
+.section-heading {
+  font-size: 2.5rem;
+  color: var(--md-sys-color-on-surface);
+  margin-bottom: 24px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.section-badge {
+  font-size: 1rem;
+  background: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+  padding: 8px 16px;
+  border-radius: var(--md-sys-shape-corner-medium);
+  font-weight: 500;
 }
 
 /* 标题样式 */
@@ -331,19 +365,42 @@ body::before, #globe-canvas {
 
 /* 移动端适配 */
 @media (max-width: 900px) {
-  .md-container {
-    grid-template-columns: 1fr; /* 变回单栏 */
-  }
-  .sidebar {
-    align-items: center; /* 居中对齐 */
+  .first-screen {
+    grid-template-columns: 1fr;
+    gap: 32px;
     text-align: center;
-    position: static;
+    min-height: auto;
   }
+
+  .first-screen-left {
+    align-items: center;
+  }
+
+  .first-screen-right {
+    order: -1; /* Move avatar to top on mobile */
+  }
+
   .contact-list li a {
     justify-content: center;
   }
+
   .profile-pic-container {
-    margin: 0 auto 20px;
+    margin: 0 auto;
+  }
+
+  .section-heading {
+    font-size: 2rem;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .footer-right {
+    text-align: center;
+    align-items: center;
   }
 }
 
@@ -452,77 +509,59 @@ body::before, #globe-canvas {
 }
 
 /* ===== Footer 样式 (MD3 Light Theme) ===== */
-.md-footer {
+.footer-container {
   width: 100%;
   max-width: 1400px;
-  /* 增加与主内容的距离，给予呼吸感 */
   margin-top: 64px;
-  /* 增加内边距，让内容不拥挤 */
   padding: 32px 20px 20px;
-
-  /* 关键修改：背景使用纯背景色，与页面融为一体 */
   background-color: var(--md-sys-color-background);
-
-  /* 使用细微的浅灰分割线 */
   border-top: 1px solid var(--md-sys-color-surface-variant);
-
-  /* 移除圆角，使底部边缘更干净利落 */
-  border-radius: 0;
-  box-shadow: none;
-
-  text-align: center;
-  font-size: 0.85rem;
-  /* 辅助文字颜色 */
-  color: var(--md-sys-color-on-surface-variant);
 }
 
-.md-footer .footer-content {
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+}
+
+.footer-left {
+  flex-shrink: 0;
+}
+
+.footer-count-image {
+  border-radius: 8px;
+  opacity: 0.8;
+  max-width: 200px;
+  height: auto;
+}
+
+.footer-right {
   display: flex;
   flex-direction: column;
-  gap: 10px; /* 增加行间距 */
+  gap: 8px;
+  text-align: right;
+  align-items: flex-end;
 }
 
-.md-footer p {
+.footer-right p {
   margin: 0;
-  /* 版权信息使用深色，更清晰 */
   color: var(--md-sys-color-on-surface);
-  font-size: 0.875rem;
-  font-weight: 400;
 }
 
-.md-footer .status-line {
-  /* 备案号使用主题 Primary 蓝色，保持高亮 */
+.footer-right a {
   color: var(--md-sys-color-primary);
   text-decoration: none;
   font-weight: 500;
-  font-size: 0.8rem;
   transition: color 0.2s;
 }
 
-.md-footer .status-line:hover {
-  /* 悬停效果 */
+.footer-right a:hover {
   color: var(--md-sys-color-primary-container);
   text-decoration: underline;
 }
 
 /* ===== Additional styles for new components ===== */
-
-/* Blob animation for Hero component */
-@keyframes blob {
-  0%, 100% {
-    transform: translate(0, 0) scale(1);
-  }
-  33% {
-    transform: translate(30px, -50px) scale(1.1);
-  }
-  66% {
-    transform: translate(-20px, 20px) scale(0.9);
-  }
-}
-
-.animate-blob {
-  animation: blob 7s infinite ease-in-out;
-}
 
 /* Material Symbols icon styling */
 .material-symbols-outlined {

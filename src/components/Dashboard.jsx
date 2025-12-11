@@ -1,36 +1,31 @@
-import { ProfileCard } from './ProfileCard';
 import { ProjectGrid } from './ProjectGrid';
 import { ActivitySection } from './ActivitySection';
 import { DeviceStatus } from './DeviceStatus';
 
 /**
- * Dashboard component - main content area that composes all sections
- * Uses original MD3 CSS classes for consistency
+ * Dashboard component - main content area with single-column flow
+ * Sections divided by large headings and small cards
  */
 export function Dashboard() {
   return (
-    <>
-      {/* Left Sidebar - Profile */}
-      <aside className="sidebar">
-        <ProfileCard />
-      </aside>
+    <div className="dashboard-content">
+      {/* Device Status Section */}
+      <DeviceStatus />
 
-      {/* Main Content - Status, Identity, Capabilities, Projects */}
-      <div className="main-content">
-        <DeviceStatus />
+      {/* Identity Section - heading + content (no large card wrapper) */}
+      <section className="content-section">
+        <h2 className="section-heading">Identity <span className="section-badge">Verified</span></h2>
+        <p className="identity-text">
+          Just a normal student.
+        </p>
+      </section>
 
-        <section className="md-card">
-          <h2 className="section-title">Identity <span>Verified</span></h2>
-          <p className="identity-text">
-            Just a normal student.
-          </p>
-        </section>
+      {/* Capabilities Section - heading + skill bars */}
+      <ActivitySection />
 
-        <ActivitySection />
-
-        <ProjectGrid />
-      </div>
-    </>
+      {/* Projects Section - heading + small cards grid */}
+      <ProjectGrid />
+    </div>
   );
 }
 

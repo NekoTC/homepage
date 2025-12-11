@@ -1,13 +1,13 @@
 import { config } from '../config';
 
 /**
- * ProjectGrid component - displays projects in a grid layout
- * Uses original MD3 card styling
+ * ProjectGrid component - displays projects with heading + small cards grid
+ * No large card wrapper, follows new single-column design
  */
 export function ProjectGrid() {
   return (
-    <section className="md-card">
-      <h2 className="section-title">Operations <span>Active</span></h2>
+    <section className="content-section">
+      <h2 className="section-heading">Operations <span className="section-badge">Active</span></h2>
       <div className="project-grid">
         {config.projects.map((project, index) => (
           <a

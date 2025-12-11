@@ -1,17 +1,11 @@
 import { useEffect, useState } from 'react'
-
-const skills = [
-    { name: 'Python', width: 81 },
-    { name: 'HTML', width: 58 },
-    { name: 'JavaScript', width: 20 },
-    { name: 'CSS', width: 34 },
-]
+import { config } from '../config'
 
 export function SkillBars() {
     return (
         <>
-            {skills.map((s) => (
-                <SkillBar key={s.name} name={s.name} width={s.width} />
+            {config.skills.map((skill) => (
+                <SkillBar key={skill.name} name={skill.name} width={skill.level} />
             ))}
         </>
     )
