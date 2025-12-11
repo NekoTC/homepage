@@ -538,8 +538,3 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Additional Tailwind-compatible utilities */
-.backdrop-blur-xl {
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-}
