@@ -1,40 +1,28 @@
 import { config } from '../config';
-import { ExpandingButton } from './ExpandingButton';
 
 /**
- * ConnectGrid component - displays social links in a grid layout
- * Material You 3 design
+ * ConnectGrid component - displays social links
+ * Uses original contact-list styling for consistency
  */
 export function ConnectGrid() {
   return (
-    <div className="bg-white/80 backdrop-blur-xl rounded-md-large p-8 shadow-lg border border-white/50">
-      <h3 className="text-2xl font-roboto font-medium text-md-on-surface mb-6">
-        Connect
-      </h3>
-      
-      <div className="flex flex-col gap-3">
-        {/* GitHub */}
-        <ExpandingButton
-          icon="code"
-          label={config.links.github.label}
-          href={config.links.github.url}
-        />
-
-        {/* Twitter */}
-        <ExpandingButton
-          icon="chat"
-          label={config.links.twitter.label}
-          href={config.links.twitter.url}
-        />
-
-        {/* Email */}
-        <ExpandingButton
-          icon="mail"
-          label={config.links.email.label}
-          href={config.links.email.url}
-        />
-      </div>
-    </div>
+    <ul className="contact-list">
+      <li>
+        <a href={config.links.github.url} target="_blank" rel="noreferrer">
+          {config.links.github.label}
+        </a>
+      </li>
+      <li>
+        <a href={config.links.twitter.url} target="_blank" rel="noreferrer">
+          {config.links.twitter.label}
+        </a>
+      </li>
+      <li>
+        <a href={config.links.email.url}>
+          {config.links.email.label}
+        </a>
+      </li>
+    </ul>
   );
 }
 

@@ -15,22 +15,22 @@ export default function App() {
     }, [])
 
     return (
-        <div className="min-h-screen bg-md-background font-roboto">
+        <>
             <Loader visible={!ready} />
 
-            <div className={`transition-opacity duration-500 ${ready ? 'opacity-100' : 'opacity-0'}`}>
-                {/* Hero Section with animated blobs */}
-                <Hero />
+            {/* Hero Section with animated blobs */}
+            <Hero />
 
-                {/* Main Dashboard Content */}
+            {/* Main Dashboard Content */}
+            <main className={`md-container ${ready ? 'content-visible' : ''}`}>
                 <Dashboard />
+            </main>
 
-                {/* Footer */}
-                <Footer />
+            {/* Footer */}
+            <Footer />
 
-                {/* Floating Action Button */}
-                <FloatingActionButton />
-            </div>
-        </div>
+            {/* Floating Action Button */}
+            <FloatingActionButton />
+        </>
     )
 }
