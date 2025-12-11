@@ -101,10 +101,10 @@ export function DeviceStatus() {
     };
 
     return (
-        <section className="md-card">
-            <h2 className="section-title">
+        <section className="content-section">
+            <h2 className="section-heading">
                 Device Status
-                <span>Real-time Monitor</span>
+                <span className="section-badge">Real-time Monitor</span>
             </h2>
 
             <div className="device-grid-layout">
