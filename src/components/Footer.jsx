@@ -1,17 +1,31 @@
+import { config } from '../config';
+
 export function Footer() {
+    // Get commit hash from environment variable
+    const commitHash = process.env.REACT_APP_COMMIT_HASH || 'dev';
+    
     return (
-        <footer className="md-footer">
-            <div className="footer-content">
-                {/* 文本更清晰 */}
-                <p>System Version: NEKOTC.V2.0 | (C) 2025 ALL RIGHTS RESERVED.</p>
-                <a
-                    className="status-line"
-                    href="https://beian.miit.gov.cn/"
-                    target="_blank"
-                    rel="noreferrer"
-                >
-                    陇ICP备2024006604号-1
-                </a>
+        <footer className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 mb-8">
+            <div className="border-t border-md-surface-variant pt-8 pb-4">
+                <div className="text-center space-y-2">
+                    {/* Version & Copyright */}
+                    <p className="text-md-on-surface-variant text-sm">
+                        System Version: {config.footer.version} | Commit: {commitHash}
+                    </p>
+                    <p className="text-md-on-surface text-sm font-medium">
+                        {config.footer.copyright}
+                    </p>
+                    
+                    {/* ICP Link */}
+                    <a
+                        href={config.footer.icpUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block text-md-primary hover:text-md-primary/80 text-xs font-medium transition-colors duration-200 hover:underline"
+                    >
+                        {config.footer.icp}
+                    </a>
+                </div>
             </div>
         </footer>
     );
